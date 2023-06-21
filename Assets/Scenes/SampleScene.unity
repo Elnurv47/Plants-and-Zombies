@@ -379,7 +379,7 @@ PrefabInstance:
     - target: {fileID: 5350998970929673748, guid: 1689330762b937341a7852f200899d4a, type: 3}
       propertyPath: placeableObject
       value: 
-      objectReference: {fileID: 1767555854541911587, guid: 062a81ea91ec86a45b9d17b100b04fbe, type: 3}
+      objectReference: {fileID: 6887283717911994817, guid: 062a81ea91ec86a45b9d17b100b04fbe, type: 3}
     - target: {fileID: 5350998970929673752, guid: 1689330762b937341a7852f200899d4a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
