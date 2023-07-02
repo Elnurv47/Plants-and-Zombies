@@ -11,7 +11,7 @@ public class Plant : PlaceableObject
     private Vector3 boxColliderCenter = Vector3.one;
     public Vector3 BoxColliderCenter { get => boxColliderCenter; set => boxColliderCenter = value; }
 
-    [SerializeField] private PlantController plantController;
+    [SerializeField] private PlantRangeChecker plantController;
 
     private void Start()
     {

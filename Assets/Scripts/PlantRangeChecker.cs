@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlantController : MonoBehaviour
+public class PlantRangeChecker : MonoBehaviour
 {
     public Action OnTriggered;
 
@@ -16,12 +16,6 @@ public class PlantController : MonoBehaviour
 
     private void Plant_OnPlaced(Node placedOnNode)
     {
-        /*float distanceToBorderLine = borderLineXPosition - plant.transform.position.x;
-
-        boxCollider.size = new Vector3(distanceToBorderLine, boxCollider.size.y, PLANT_LOCATED_CELL_SIZE - 0.2f);
-        float boxColliderCenteredXPosition = distanceToBorderLine / 2;
-        boxCollider.center = new Vector3(boxColliderCenteredXPosition, 1, 1);*/
-
         boxCollider.size = plant.BoxColliderSize;
         boxCollider.center = plant.BoxColliderCenter;
     }
