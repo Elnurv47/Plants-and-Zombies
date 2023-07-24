@@ -6,8 +6,9 @@ public class PeaShooter : Plant
 
     [SerializeField] private float borderLineXPosition;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         OnPlaced += Plant_OnPlaced;
     }
 

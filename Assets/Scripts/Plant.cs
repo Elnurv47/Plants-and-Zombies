@@ -11,11 +11,11 @@ public class Plant : PlaceableObject
     private Vector3 boxColliderCenter = Vector3.one;
     public Vector3 BoxColliderCenter { get => boxColliderCenter; set => boxColliderCenter = value; }
 
-    [SerializeField] private PlantRangeChecker plantController;
+    [SerializeField] private PlantRangeChecker plantRangeChecker;
 
-    private void Start()
+    protected virtual void Start()
     {
-        plantController.OnTriggered += PlantController_OnTriggered;
+        plantRangeChecker.OnTriggered += PlantController_OnTriggered;
     }
 
     public override void InvokeOnPlaced(Node placedOnNode)

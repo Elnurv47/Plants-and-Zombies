@@ -22,6 +22,11 @@ public class PlantRangeChecker : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
+        Debug.Log("Trigger");
+        if (OnTriggered != null)
+        {
+            Debug.Log("not null");
+        }
         OnTriggered?.Invoke();
     }
 }
