@@ -5,17 +5,14 @@ public class Plant : PlaceableObject
 {
     public Action<Node> OnPlaced;
 
-    private Vector3 boxColliderSize = Vector3.one;
-    public Vector3 BoxColliderSize { get => boxColliderSize; set => boxColliderSize = value; }
-
     private Vector3 boxColliderCenter = Vector3.one;
     public Vector3 BoxColliderCenter { get => boxColliderCenter; set => boxColliderCenter = value; }
 
-    [SerializeField] private PlantRangeChecker plantRangeChecker;
+    [SerializeField] private PlantLongRangeChecker plantLongRangeChecker;
 
     protected virtual void Start()
     {
-        plantRangeChecker.OnTriggered += PlantController_OnTriggered;
+        plantLongRangeChecker.OnTriggered += PlantRangeChecker_OnTriggered;
     }
 
     public override void InvokeOnPlaced(Node placedOnNode)
@@ -24,8 +21,14 @@ public class Plant : PlaceableObject
         OnPlaced?.Invoke(placedOnNode);
     }
 
-    private void PlantController_OnTriggered()
+    private void PlantRangeChecker_OnTriggered()
     {
         Debug.Log("Something entered range!");
+        Attack();
+    }
+
+    protected virtual void Attack()
+    {
+        Debug.Log("Attacking");
     }
 }

@@ -17,7 +17,6 @@ public class Zombie : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        ResetVelocityAfterAddingForce();
 
         if (timer > maxTimer)
         {
@@ -33,11 +32,16 @@ public class Zombie : MonoBehaviour
             rigidBody.AddForce(Vector3.left * speedForce);
             canMove = false;
         }
+
+        if (timer > 0.5f)
+        {
+            ResetVelocityAfterAddingForce();
+        }
     }
 
     private void ResetVelocityAfterAddingForce()
     {
-        if (rigidBody.velocity.magnitude > 0 && timer > 0.5f)
+        if (rigidBody.velocity.magnitude > 0)
         {
             rigidBody.velocity = Vector3.zero;
         }
