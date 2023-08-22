@@ -7,9 +7,13 @@ public class PlantLongRangeChecker : MonoBehaviour
 
     public Action OnTriggered;
 
+    private bool hasAttackTarget;
+    public bool HasAttackTarget { get => hasAttackTarget; }
+
     [SerializeField] private float borderLineXPosition;
     [SerializeField] private Plant plant;
     [SerializeField] private BoxCollider boxCollider;
+    [SerializeField] private LayerMask zombieLayerMask;
 
     private void Start()
     {
@@ -25,8 +29,12 @@ public class PlantLongRangeChecker : MonoBehaviour
         boxCollider.center = new Vector3(boxColliderCenteredXPosition, 1, 1);
     }
 
-    private void OnTriggerEnter(Collider collider)
+    private void Update()
     {
-        OnTriggered?.Invoke();
+        Collider[] collidersInRange = 
+            Physics.OverlapBox(
+                transform.TransformPoint(boxCollider.center), boxCollider.size / 2, Quaternion.identity, zombieLayerMask);
+        Debug.Log(collidersInRange.Length);
+        hasAttackTarget = collidersInRange.Length > 0;
     }
 }

@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Zombie : MonoBehaviour
+public class Zombie : MonoBehaviour, IDamageable
 {
-    private float speedForce = 80f;
-    private Rigidbody rigidBody;
+    private float speedForce = 120f;
+    private Rigidbody rb;
 
     private float timer = 0;
     private float maxTimer = 1.5f;
@@ -11,7 +11,7 @@ public class Zombie : MonoBehaviour
 
     private void Awake()
     {
-        rigidBody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -29,7 +29,7 @@ public class Zombie : MonoBehaviour
     {
         if (canMove)
         {
-            rigidBody.AddForce(Vector3.left * speedForce);
+            rb.AddForce(Vector3.left * speedForce);
             canMove = false;
         }
 
@@ -41,9 +41,14 @@ public class Zombie : MonoBehaviour
 
     private void ResetVelocityAfterAddingForce()
     {
-        if (rigidBody.velocity.magnitude > 0)
+        if (rb.velocity.magnitude > 0)
         {
-            rigidBody.velocity = Vector3.zero;
+            rb.velocity = Vector3.zero;
         }
+    }
+
+    public void TakeDamage()
+    {
+        Destroy(gameObject);
     }
 }

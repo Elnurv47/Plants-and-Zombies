@@ -73,6 +73,7 @@ MonoBehaviour:
   visualTransform: {fileID: 5043797162638794883}
   plantLongRangeChecker: {fileID: 8558802771055880399}
   borderLineXPosition: 12
+  bulletPrefab: {fileID: 5876678455041193776, guid: 4ff14c09a0fe96347a3f4ab33f20d549, type: 3}
 --- !u!1 &3253507280983512041
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +143,9 @@ MonoBehaviour:
   borderLineXPosition: 12
   plant: {fileID: 6887283717911994817}
   boxCollider: {fileID: 3449806930429868674}
+  zombieLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1001 &7866235137205302838
 PrefabInstance:
   m_ObjectHideFlags: 0
