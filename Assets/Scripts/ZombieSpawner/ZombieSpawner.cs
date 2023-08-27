@@ -15,15 +15,12 @@ public class ZombieSpawner : MonoBehaviour
 
     private IEnumerator SpawnZombieCoroutine()
     {
-        int i = 0;
-
-        while (i == 0)
+        while (true)
         {
             yield return new WaitForSeconds(ZOMBIE_SPAWN_INTERVAL);
 
             Vector3 randomSpawnPosition = spawnPositions[Random.Range(0, spawnPositions.Length)];
             Instantiate(zombiePrefab, randomSpawnPosition, Quaternion.identity);
-            i++;
         }
     }
 }

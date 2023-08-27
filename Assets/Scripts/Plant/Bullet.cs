@@ -2,14 +2,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private float speed = 10f;
-    private Rigidbody rb;
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
-
+    [SerializeField] private float speed = 10f;
+    [SerializeField] private float damageAmount = 50f;
     private void Update()
     {
         transform.Translate(Vector3.right * Time.deltaTime * speed);
@@ -22,7 +16,7 @@ public class Bullet : MonoBehaviour
         if (collidedObject.TryGetComponent(out IDamageable damageable))
         {
             Destroy(gameObject);
-            damageable.TakeDamage();
+            damageable.TakeDamage(damageAmount);
         }
     }
 }

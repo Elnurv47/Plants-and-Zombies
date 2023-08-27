@@ -9,9 +9,18 @@ public class Zombie : MonoBehaviour, IDamageable
     private float maxTimer = 1.5f;
     private bool canMove = true;
 
+    private HealthSystem healthSystem;
+    [SerializeField] private float maxHealth = 100f;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        healthSystem = new HealthSystem(maxHealth);
+    }
+
+    private void Start()
+    {
+        healthSystem.OnDied += HealthSystem_OnDied;
     }
 
     private void Update()
@@ -47,7 +56,12 @@ public class Zombie : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage()
+    public void TakeDamage(float amount)
+    {
+        healthSystem.DecreaseHealth(amount);
+    }
+
+    public void HealthSystem_OnDied()
     {
         Destroy(gameObject);
     }

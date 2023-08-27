@@ -34,7 +34,6 @@ public class PlantLongRangeChecker : MonoBehaviour
         Collider[] collidersInRange = 
             Physics.OverlapBox(
                 transform.TransformPoint(boxCollider.center), boxCollider.size / 2, Quaternion.identity, zombieLayerMask);
-        Debug.Log(collidersInRange.Length);
         hasAttackTarget = collidersInRange.Length > 0;
     }
 }
